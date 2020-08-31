@@ -9,6 +9,9 @@ app.get('/',function(req, res){     //res는 응답에 대한 객체, get은 라
 app.get('/login',function(req,res){
     res.render('login',{title:"login",time:Date()});
 });
+app.get('/signUp',function(req,res){
+    res.render('signUp');
+})
 app.listen(3000, function(){
     console.log('Connected 3000 port!');
 });   //port 지정
