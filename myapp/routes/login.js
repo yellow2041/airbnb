@@ -20,6 +20,7 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
     console.log(req.body);
+    console.log(res.locals.sessionTable);
     db.find({ email: req.body.email, password: req.body.password }, function (err, docs) {
         if (!err) {
             console.log(docs);
@@ -27,6 +28,7 @@ router.post('/', function (req, res) {
                 const sid=randomSID();
                 sessionTable[sid]=docs.email;
                 res.cookie('sid',sid,{maxAge:300000});
+                res.cookie('name',req.body.email)
                 res.redirect('/');
             }
             else{
