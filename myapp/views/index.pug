@@ -1,5 +1,6 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  button(onclick="location.href='/login'")= button
+  h1
+    #{user}
