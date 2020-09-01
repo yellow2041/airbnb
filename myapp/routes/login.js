@@ -4,8 +4,6 @@ var router = express.Router();
 var Datastore = require('nedb');
 var db = new Datastore({ filename: 'user.db', autoload: true });
 
-var sessionTable={};
-
 function randomSID() {
     var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
     var sid = '';
@@ -15,20 +13,25 @@ function randomSID() {
 }
 
 router.get('/', function (req, res) {
-    res.render('login', { title: "login", time: Date() });
+    if(req.cookies["sid"] in req.app.locals.sessionTable){
+        delete req.app.locals.sessionTable[req.cookies["sid"]];
+        delete req.cookies["name"];
+        delete req.cookies["sid"];
+        res.redirect('/');
+    }
+    else
+        res.render('login', { title: "login", time: Date() });
 });
 
 router.post('/', function (req, res) {
-    console.log(req.body);
-    console.log(res.locals.sessionTable);
     db.find({ email: req.body.email, password: req.body.password }, function (err, docs) {
         if (!err) {
             console.log(docs);
             if (docs.length!==0) {
                 const sid=randomSID();
-                sessionTable[sid]=docs.email;
+                req.app.locals.sessionTable[sid]=docs.email;
                 res.cookie('sid',sid,{maxAge:300000});
-                res.cookie('name',req.body.email)
+                res.cookie('name',req.body.email,{maxAge:300000})
                 res.redirect('/');
             }
             else{
