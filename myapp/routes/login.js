@@ -1,4 +1,5 @@
 var express = require('express');
+var crypto = require('crypto');
 var router = express.Router();
 
 //var Datastore = require('nedb');
@@ -13,7 +14,7 @@ function randomSID() {
 }
 
 router.get('/', function (req, res) {
-    if(req.cookies["sid"] in req.app.locals.sessionTable){
+    if (req.cookies["sid"] in req.app.locals.sessionTable) {
         delete req.app.locals.sessionTable[req.cookies["sid"]];
         delete req.cookies["name"];
         delete req.cookies["sid"];
@@ -25,16 +26,25 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
     req.app.locals.db.loadDatabase();
-    req.app.locals.db.find({ email: req.body.email, password: req.body.password }, function (err, docs) {
+    req.app.locals.db.find({ email: req.body.email }, function (err, docs) {
         if (!err) {
-            if (docs.length!==0) {
-                const sid=randomSID();
-                req.app.locals.sessionTable[sid]=docs.email;
-                res.cookie('sid',sid,{maxAge:300000});
-                res.cookie('name',req.body.email,{maxAge:300000});
-                res.redirect('/');
+            if (docs.length !== 0) {
+                console.log(docs[0].password);
+                var deciper = crypto.createDecipher('aes256', 'password');
+                deciper.update(docs[0].password, 'hex', 'ascii');
+                var decipherPassword = deciper.final('ascii');
+                if (req.body.password === decipherPassword) {
+                    const sid = randomSID();
+                    req.app.locals.sessionTable[sid] = docs.email;
+                    res.cookie('sid', sid, { maxAge: 300000 });
+                    res.cookie('name', req.body.email, { maxAge: 300000 });
+                    res.redirect('/');
+                }
+                else {
+                    res.render('loginAlert');
+                }
             }
-            else{
+            else {
                 res.render('loginAlert');
             }
         }

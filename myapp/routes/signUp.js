@@ -1,4 +1,5 @@
 var express = require('express');
+var crypto = require('crypto');
 var router = express.Router();
 
 var Datastore=require('nedb');
@@ -9,11 +10,14 @@ router.get('/',function(req,res){
   });
 
 router.post('/', async(req, res, next)=>{
+    var cipher = crypto.createCipher('aes256','password');
+    cipher.update(req.body.password,'ascii','hex');
+    var cipherPassword = cipher.final('hex');
     var userData={
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        password: req.body.password,
+        password: cipherPassword,
         birthday: req.body.birthday
     };
     req.app.locals.db.loadDatabase();
