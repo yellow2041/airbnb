@@ -22,6 +22,7 @@ router.post('/', function(req, res){
             return;
         }
         console.log(newDoc);
-    })
+    });
+    res.redirect('/');
 });
 module.exports = router;
