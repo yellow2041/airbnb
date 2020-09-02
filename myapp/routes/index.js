@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     res.render('index',{button: '로그인', user:''});
   }
   else{
-    if(req.cookies["sid"] in req.app.locals.sessionTable)
+    if(req.cookies["sid"] in req.app.lonpmcals.sessionTable)
       res.render('index',{button:'로그아웃',user: req.cookies["name"]+'님 안녕하세요!'});
     else
       res.render('index',{button: '로그인', user:''});

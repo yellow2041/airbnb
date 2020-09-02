@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var Datastore=require('nedb');
-var db=new Datastore({filename: 'user.db', autoload: true});
+//var db=new Datastore({filename: 'user.db', autoload: true});
 
 router.get('/',function(req,res){
     res.render('signUp');
@@ -16,7 +16,7 @@ router.post('/', function(req, res){
         password: req.body.password,
         birthday: req.body.birthday
     };
-    db.insert(userData,function(err, newDoc){
+    req.app.locals.db.insert(userData,function(err, newDoc){
         if(err){
             console.log(err);
             return;

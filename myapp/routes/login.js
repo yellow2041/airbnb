@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var Datastore = require('nedb');
-var db = new Datastore({ filename: 'user.db', autoload: true });
+//var Datastore = require('nedb');
+//var db = new Datastore({ filename: 'user.db', autoload: true });
 
 function randomSID() {
     var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
@@ -24,20 +24,20 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    db.find({ email: req.body.email, password: req.body.password }, function (err, docs) {
+    req.app.locals.db.find({ email: req.body.email, password: req.body.password }, function (err, docs) {
         if (!err) {
             console.log(docs);
             if (docs.length!==0) {
                 const sid=randomSID();
                 req.app.locals.sessionTable[sid]=docs.email;
                 res.cookie('sid',sid,{maxAge:300000});
-                res.cookie('name',req.body.email,{maxAge:300000})
+                res.cookie('name',req.body.email,{maxAge:300000});
                 res.redirect('/');
             }
             else{
                 res.send('<script type="text/javascript">alert(\'로그인 정보를 확인해주세요!\');</script>');
             }
         }
-    })
+    });
 });
 module.exports = router;
