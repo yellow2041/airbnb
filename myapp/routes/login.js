@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var Datastore = require('nedb');
-var db = new Datastore({ filename: 'user.db', autoload: true });
+//var Datastore = require('nedb');
+//var db = new Datastore({ filename: 'user.db', autoload: true });
 
 function randomSID() {
     var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
@@ -24,7 +24,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    db.find({ email: req.body.email, password: req.body.password }, function (err, docs) {
+    req.app.locals.db.find({ email: req.body.email, password: req.body.password }, function (err, docs) {
         if (!err) {
             console.log(docs);
             if (docs.length!==0) {
