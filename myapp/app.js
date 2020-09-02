@@ -11,7 +11,7 @@ var loginRouter = require('./routes/login');
 
 var app = express();
 
-app.locals.sessionTable={a:'1',b:'2'};
+app.locals.sessionTable={};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

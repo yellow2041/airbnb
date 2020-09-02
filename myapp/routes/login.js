@@ -31,13 +31,13 @@ router.post('/', function (req, res) {
                 const sid=randomSID();
                 req.app.locals.sessionTable[sid]=docs.email;
                 res.cookie('sid',sid,{maxAge:300000});
-                res.cookie('name',req.body.email,{maxAge:300000})
+                res.cookie('name',req.body.email,{maxAge:300000});
                 res.redirect('/');
             }
             else{
                 res.send('<script type="text/javascript">alert(\'로그인 정보를 확인해주세요!\');</script>');
             }
         }
-    })
+    });
 });
 module.exports = router;
