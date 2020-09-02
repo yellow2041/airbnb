@@ -5,13 +5,13 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   console.log(req.cookies);
   if(!("sid" in req.cookies)){
-    res.render('index',{button: '로그인', user:''});
+    res.render('index',{button: '로그인', user:'', isLogin: false});
   }
   else{
-    if(req.cookies["sid"] in req.app.lonpmcals.sessionTable)
-      res.render('index',{button:'로그아웃',user: req.cookies["name"]+'님 안녕하세요!'});
+    if(req.cookies["sid"] in req.app.locals.sessionTable)
+      res.render('index',{button:'로그아웃',user: req.cookies["name"]+'님 안녕하세요!', isLogin: true});
     else
-      res.render('index',{button: '로그인', user:''});
+      res.render('index',{button: '로그인', user:'', isLogin: false});
   }
 });
 

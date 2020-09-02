@@ -2,4 +2,6 @@ extends layout
 
 block content
   button(onclick="location.href='/login'")= button
+  if !isLogin
+    button(onclick="location.href='/signUp'") 회원가입
   h1= user

@@ -24,9 +24,9 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
+    req.app.locals.db.loadDatabase();
     req.app.locals.db.find({ email: req.body.email, password: req.body.password }, function (err, docs) {
         if (!err) {
-            console.log(docs);
             if (docs.length!==0) {
                 const sid=randomSID();
                 req.app.locals.sessionTable[sid]=docs.email;
@@ -35,9 +35,10 @@ router.post('/', function (req, res) {
                 res.redirect('/');
             }
             else{
-                res.send('<script type="text/javascript">alert(\'로그인 정보를 확인해주세요!\');</script>');
+                res.render('loginAlert');
             }
         }
     });
 });
+
 module.exports = router;

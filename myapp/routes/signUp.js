@@ -8,7 +8,7 @@ router.get('/',function(req,res){
     res.render('signUp');
   });
 
-router.post('/', function(req, res){
+router.post('/', async(req, res, next)=>{
     var userData={
         email: req.body.email,
         firstName: req.body.firstName,
@@ -16,13 +16,21 @@ router.post('/', function(req, res){
         password: req.body.password,
         birthday: req.body.birthday
     };
-    req.app.locals.db.insert(userData,function(err, newDoc){
-        if(err){
-            console.log(err);
-            return;
+    req.app.locals.db.loadDatabase();
+    await req.app.locals.db.find({ email: userData.email },function(err,docs){
+        if(docs.length!==0){
+            res.render('overlappingAccount');
         }
-        console.log(newDoc);
+        else{
+            req.app.locals.db.insert(userData,function(err, newDoc){
+                if(err){
+                    console.log(err);
+                    return;
+                }
+                console.log(newDoc);
+            });
+            res.redirect('/');
+        }
     });
-    res.redirect('/');
 });
 module.exports = router;
