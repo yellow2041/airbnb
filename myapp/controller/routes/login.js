@@ -3,9 +3,6 @@ var router = express.Router();
 var crypto = require('crypto');
 var session = require('../session');
 
-//var Datastore = require('nedb');
-//var db = new Datastore({ filename: 'user.db', autoload: true });
-
 router.get('/', function (req, res) {
     if(session.getSession(req.cookies["sid"])){
         session.deleteSession(req.cookies["sid"]);
@@ -26,17 +23,17 @@ router.post('/', function (req, res) {
                 deciper.update(docs[0].password, 'hex', 'ascii');
                 var decipherPassword = deciper.final('ascii');
                 if (req.body.password === decipherPassword) {
-                    const sid = session.setSession(docs.email);
+                    const sid = session.setSession(docs[0].email);
                     res.cookie('sid', sid, { maxAge: 300000 });
                     res.cookie('name', req.body.email, { maxAge: 300000 });
                     res.redirect('/');
                 }
                 else {
-                    res.render('loginAlert');
+                    res.render('alert',{message:'\'로그인 정보를 확인해주세요!\'',redirect:'\'/login\''});
                 }
             }
             else {
-                res.render('loginAlert');
+                res.render('alert',{message:'\'로그인 정보를 확인해주세요!\'',redirect:'\'/login\''});
             }
         }
     });
