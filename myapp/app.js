@@ -5,15 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var Datastore = require('nedb');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var signUpRouter = require('./routes/signUp');
-var loginRouter = require('./routes/login');
+var indexRouter = require('./controller/routes/index');
+var usersRouter = require('./controller/routes/users');
+var signUpRouter = require('./controller/routes/signUp');
+var loginRouter = require('./controller/routes/login');
 
 var app = express();
 
-app.locals.sessionTable={};
-app.locals.db= new Datastore({ filename: 'user.db', autoload: true });
+app.locals.db= new Datastore({ filename: './database/user.db', autoload: true });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
