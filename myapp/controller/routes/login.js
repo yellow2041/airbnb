@@ -1,20 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var session = require('../session');
 
 //var Datastore = require('nedb');
 //var db = new Datastore({ filename: 'user.db', autoload: true });
 
-function randomSID() {
-    var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-    var sid = '';
-    for (var i = 0; i < 30; i++)
-        sid += chars.charAt(Math.floor(Math.random() * chars.length));
-    return sid;
-}
-
 router.get('/', function (req, res) {
-    if(req.cookies["sid"] in req.app.locals.sessionTable){
-        delete req.app.locals.sessionTable[req.cookies["sid"]];
+    if(session.getSession(req.cookies["sid"])){
+        session.deleteSession(req.cookies["sid"]);
         delete req.cookies["name"];
         delete req.cookies["sid"];
         res.redirect('/');
@@ -28,8 +21,7 @@ router.post('/', function (req, res) {
     req.app.locals.db.find({ email: req.body.email, password: req.body.password }, function (err, docs) {
         if (!err) {
             if (docs.length!==0) {
-                const sid=randomSID();
-                req.app.locals.sessionTable[sid]=docs.email;
+                const sid=session.setSession(docs.email);
                 res.cookie('sid',sid,{maxAge:300000});
                 res.cookie('name',req.body.email,{maxAge:300000});
                 res.redirect('/');
