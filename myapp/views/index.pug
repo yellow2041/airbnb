@@ -1,8 +1,29 @@
-extends layout
-
-block content
-  button(onclick="location.href='/login'")= button
-  button(onclick="location.href='/become_a_host'") 숙소 등록
-  if !isLogin
-    button(onclick="location.href='/signUp'") 회원가입
-    h1= user
+doctype html
+html
+  head
+    title 숙소, 체험, 장소를 모두 한 곳에서 - 에어비앤비
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type="text/javascript" async src="/javascripts/index.js")
+    meta(charset="utf-8")
+  body
+    noscript &quot;&lt;div class=&quot;alert alert-with-icon alert-error no-js-alert&quot; data-nosnippet=&quot;true&quot;&gt;&lt;i class=&quot;icon alert-icon icon-alert-alt&quot;&gt;&lt;/i&gt;죄송합니다. 에어비앤비 웹사이트의 일부는 자바스크립트가 활성화되어 있지 않으면 제대로 작동하지 않습니다.&lt;/div&gt;&quot;
+    div.fixed_box
+      aside.fixed_message
+        a.fixed_message_text
+          span.fixed_message_space 에어비앤비의 코로나19 대응 방안에 대한 최신 정보를 확인하세요.
+    header.header
+      div.header1
+        div.header2
+          a.header3(aria-label="에어비앤비 홈페이지" href="/")
+            img(src="/images/airbnb-brands.svg" width="30%")
+        div.header2
+          nav.header4(aria-label="메인")
+            div.header5
+              a.become_a_host(herf="/become_a_host")
+                div.become_a_host_text 호스트 되기
+    div.tmp
+      button(onclick="location.href='/login'")= button
+      button(onclick="location.href='/become_a_host'") 숙소 등록
+      if !isLogin
+        button(onclick="location.href='/signUp'") 회원가입
+        h1= user
