@@ -6,7 +6,7 @@ router.get('/',function(req,res){
     if(("sid" in req.cookies)&&session.getSession(req.cookies["sid"]))
         res.render('become_a_host');
     else
-        res.render('alert',{message:'\'로그인을 해주세요.\'',redirect:'\'/login\''});
+        res.render('alert',{message:'로그인을 해주세요.',redirect:'/login'});
   });
 
 router.post('/', async(req, res, next)=>{
