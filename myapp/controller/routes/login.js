@@ -19,10 +19,10 @@ router.post('/', function (req, res) {
     req.app.locals.db.find({ email: req.body.email }, function (err, docs) {
         if (!err) {
             if (docs.length !== 0) {
-                var deciper = crypto.createDecipher('aes256', 'password');
-                deciper.update(docs[0].password, 'hex', 'ascii');
-                var decipherPassword = deciper.final('ascii');
-                if (req.body.password === decipherPassword) {
+                var hash = crypto.createHash('sha512');
+                hash.update(req.body.password);
+                var hashedPassword = hash.digest('hex');
+                if (hashedPassword === docs[0].password) {
                     const sid = session.setSession(docs[0].email);
                     res.cookie('sid', sid, { maxAge: 300000 });
                     res.cookie('name', req.body.email, { maxAge: 300000 });

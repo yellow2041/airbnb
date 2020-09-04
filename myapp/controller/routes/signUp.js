@@ -10,14 +10,14 @@ router.get('/',function(req,res){
   });
 
 router.post('/', async(req, res, next)=>{
-    var cipher = crypto.createCipher('aes256','password');
-    cipher.update(req.body.password,'ascii','hex');
-    var cipherPassword = cipher.final('hex');
+    var hash = crypto.createHash('sha512');
+    hash.update(req.body.password);
+    var hashedPassword = hash.digest('hex');
     var userData={
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        password: cipherPassword,
+        password: hashedPassword,
         birthday: req.body.birthday
     };
     req.app.locals.db.loadDatabase();
