@@ -9,10 +9,12 @@ var indexRouter = require('./controller/routes/index');
 var usersRouter = require('./controller/routes/users');
 var signUpRouter = require('./controller/routes/signUp');
 var loginRouter = require('./controller/routes/login');
+var become_a_hostRouter = require('./controller/routes/become_a_host');
 
 var app = express();
 
 app.locals.db= new Datastore({ filename: './database/user.db', autoload: true });
+app.locals.accommodationDB=new Datastore({filename: './database/accommodation.db',autoload:true});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +30,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/signUp', signUpRouter);
 app.use('/login', loginRouter);
+app.use('/become_a_host', become_a_hostRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

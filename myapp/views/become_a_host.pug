@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        title= title
+    body
+        h1 숙소 추가
+        form(method='post')
+            p 설명: 
+                input(type="text" name="explanation")
+            p 유형: 
+                input(type="text" name="type")
+            p 지역: 
+                input(type="text" name="region")
+            p 세부 지역: 
+                input(type="text" name="detailed_region")
+            p 대표 가격: 
+                input(type="text" name="original_price")
+            p 할인된 가격: 
+                input(type="text" name="discounted_price")
+            p
+                input(type="submit" value="추가하기")

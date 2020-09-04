@@ -4,7 +4,6 @@ var session=require('../session');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(req.cookies);
   if(!("sid" in req.cookies)){
     res.render('index',{button: '로그인', user:'', isLogin: false});
   }
