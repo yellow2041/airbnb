@@ -47,6 +47,13 @@ h1 {
   margin-inline-end: 0px;
   font-weight: bold;
 }
+ul {
+  list-style-type: none;
+  line-height: 2.3em;
+}
+li:hover {
+  cursor: pointer;
+}
 
 .fixed_box {
   display: block;
@@ -106,15 +113,17 @@ h1 {
 .header4 {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-end;
-  height: 80px;
+  height: 42px;
   box-sizing: border-box;
 }
 .header5 {
   display: flex;
   margin-right: 8px;
   box-sizing: border-box;
+  position: relative;
+  right: -170px;
 }
 .become_a_host {
   appearance: none;
@@ -201,8 +210,10 @@ h1 {
 }
 .header_user {
   display: flex;
+  align-items: flex-end;
   position: relative;
   box-sizing: border-box;
+  flex-direction: column;
 }
 .header_user_btn {
   appearance: none;
@@ -226,11 +237,72 @@ h1 {
   background-color: #FFFFFF;
   border-radius: 21px;
   height: 42px;
+  width: 33%;
   position: relative;
   vertical-align: middle;
   transition: box-shadow 0.2s ease;
   z-index: 1;
   box-sizing: border-box;
+}
+.header_user_btn:hover {
+  appearance: none;
+  background: transparent;
+  border: 1px solid #dddddd;
+  color: #222222;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  margin: 0px;
+  outline: none;
+  overflow: visible;
+  padding: 5px 5px 5px 12px;
+  text-align: inherit;
+  text-decoration: none;
+  user-select: auto;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 21px;
+  height: 42px;
+  width: 33%;
+  position: relative;
+  vertical-align: middle;
+  transition: box-shadow 0.2s ease;
+  z-index: 1;
+  box-sizing: border-box;
+  box-shadow: rgba(0,0,0,0.18) 0px 2px 4px;
+}
+.header_user_btn_click {
+  appearance: none;
+  background: transparent;
+  border: 1px solid #dddddd;
+  color: #222222;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  margin: 0px;
+  outline: none;
+  overflow: visible;
+  padding: 5px 5px 5px 12px;
+  text-align: inherit;
+  text-decoration: none;
+  user-select: auto;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 21px;
+  height: 42px;
+  width: 33%;
+  position: relative;
+  vertical-align: middle;
+  transition: box-shadow 0.2s ease;
+  z-index: 1;
+  box-sizing: border-box;
+  box-shadow: rgba(0,0,0,0.18) 0px 2px 4px;
 }
 .header_user_icon {
   color: #717171;
@@ -413,15 +485,13 @@ h1 {
   color: rgb(72,72,72);
 }
 .profile_menu_container {
-  margin-top: 20px;
+  margin-top: 7px;
   padding: 5px;
   align-items: center;
   z-index: 2000;
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  left: 0px;
+  position: relative;
   display: flex;
+  visibility: hidden;
   flex-direction: row;
   justify-content: center;
   box-sizing: border-box;
