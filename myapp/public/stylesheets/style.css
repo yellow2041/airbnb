@@ -54,6 +54,29 @@ ul {
 li:hover {
   cursor: pointer;
 }
+label {
+  cursor: default;
+}
+input {
+  text-rendering: auto;
+  color: lightslategray;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: textfield;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.333px Arial;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118,118,118),rgb(195,195,195));
+  border-image: initial;
+}
 
 .fixed_box {
   display: block;
@@ -509,4 +532,140 @@ li:hover {
   box-shadow: rgba(0,0,0,0.15) 0px 8px 28px;
   animation-iteration-count: 1;
   animation-fill-mode: both;
+}
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.3);
+  pointer-events: all;
+  z-index:200;
+}
+.email_login_start {
+  overflow: hidden;
+  text-align: center;
+}
+.email_login_line {
+  padding-bottom: var(--spacing-rule-text-vertical, 16px);
+  padding-top: var(--spacing-rule-text-vertical, 16px);
+  padding-left: var(--spacing-rule-text-vertical, 16px);
+  padding-right: var(--spacing-rule-text-vertical, 16px);
+  position: relative;
+  box-sizing:border-box;
+}
+.email_login_or {
+  margin: 0px;
+  overflow-wrap: break-word;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3em;
+  color: rgb(118,118,118);
+}
+.line_left {
+  border-bottom-width: var(--border-rule-border-width, 1px);
+  border-bottom-color: var(--color-panel-border, #e4e4e4);
+  content:"";
+  position: absolute;
+  border-bottom: 1px solid rgb(228,228,228);
+  top: 50%;
+  right: 100%;
+  width: 5000px;
+}
+.line_right {
+  border-bottom-width: var(--border-rule-border-width, 1px);
+  border-bottom-color: var(--color-panel-border, #e4e4e4);
+  content:"";
+  position: absolute;
+  border-bottom: 1px solid rgb(228,228,228);
+  top: 50%;
+  left: 100%;
+  width: 5000px;
+}
+.login_input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+.input_label {
+  border: 0px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0px;
+  position: absolute;
+  white-space: nowrap;
+  width:1px;
+  line-height: normal;
+}
+.input_box {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: normal;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  text-transform: undefined;
+  color: #484848;
+  padding-top: var(--font-form-element-padding-top, undefined);
+  padding-bottom: var(--font-form-element-padding-bottom, undefined);
+  border-width: 1px;
+  border-color: #EBEBEB;
+  border-radius: 4px;
+  border-style: solid;
+  background-color: #ffffff;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+}
+.input_icon_space {
+  float: right;
+}
+.input_icon1 {
+  visibility: visible;
+  height: 46px;
+  padding-right: 11px;
+}
+.input_icon2 {
+  display: table;
+  position: relative;
+  height: 100%;
+}
+.input_icon_image {
+  display: table-cell;
+  vertical-align: middle;
+}
+.input_box_real {
+  overflow: hidden;
+  position: relative;
+}
+.login_input_form {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: normal;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  text-transform: undefined;
+  color: #484848;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  font-weight: normal;
+  background-color: transparent;
+  padding-left: 11px;
+  padding-right: 11px;
+  border: 0px;
+  width: 100%;
+  margin: 0px;
+}
+
+
+
+#body_div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
