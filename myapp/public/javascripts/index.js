@@ -31,14 +31,30 @@ close_modal.addEventListener('click',(event)=>{
     login_modal.style.display="none";
 });
 
-document.getElementById('modal_overlay').addEventListener('click',(event)=>{
-    if(event.target.id!=='modal'&&login_modal.style.display==="block")
+const input_box_email=document.getElementById('input_box_email');
+const input_box_password=document.getElementById('input_box_password');
+
+document.getElementById('login_modal').addEventListener('click',(event)=>{
+    if((event.target.id==='modal_overlay'||event.target.id==='modal_container')&&login_modal.style.display==="block")
         login_modal.style.display="none";
-})
+});
+document.getElementById('modal').addEventListener('click',(event)=>{
+    if(event.target.id!=='login_input_form_email'&&input_box_email.className==='input_box_clicked')
+        input_box_email.className='input_box';
+    else if(event.target.id!=='login_input_form_password'&&input_box_password.className==='input_box_clicked')
+        input_box_password.className='input_box';
+});
 
 document.getElementById('body_div').addEventListener('click',(event)=>{
     if(event.target.id!=='profile_menu'&&t.style.visibility=== 'visible'){
         t.style.visibility= 'hidden';
         c.className="header_user_btn";
     }
-})
+});
+
+document.getElementById('login_input_form_email').addEventListener('click',(event)=>{
+    input_box_email.className="input_box_clicked";
+});
+document.getElementById('login_input_form_password').addEventListener('click',(event)=>{
+    input_box_password.className="input_box_clicked";
+});

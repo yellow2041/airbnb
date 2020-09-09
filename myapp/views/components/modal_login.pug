@@ -1,50 +1,3 @@
-doctype html
-html
-  head
-    title 숙소, 체험, 장소를 모두 한 곳에서 - 에어비앤비
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    script(type="text/javascript" async src="/javascripts/index.js")
-    meta(charset="utf-8")
-  body
-    div#body_div
-    noscript &quot;&lt;div class=&quot;alert alert-with-icon alert-error no-js-alert&quot; data-nosnippet=&quot;true&quot;&gt;&lt;i class=&quot;icon alert-icon icon-alert-alt&quot;&gt;&lt;/i&gt;죄송합니다. 에어비앤비 웹사이트의 일부는 자바스크립트가 활성화되어 있지 않으면 제대로 작동하지 않습니다.&lt;/div&gt;&quot;
-    div.fixed_box
-      aside.fixed_message
-        a.fixed_message_text
-          span.fixed_message_space 에어비앤비의 코로나19 대응 방안에 대한 최신 정보를 확인하세요.
-    header.header
-      div.header_logo
-        div
-          a.header_logo_link(aria-label="에어비앤비 홈페이지" href="/")
-            include ../public/images/svg_pug/airbnb_logo.pug
-        div
-          nav.header_menu(aria-label="메인")
-            div.header_menu_right
-              a.become_a_host(href="/become_a_host")
-                div.become_a_host_text 호스트 되기
-              div.header_language
-                button.headerBtn(type="button", aria-expanded="false" aria-label="언어와 통화")
-                    div.header_language_btn
-                      div.header_language_btn_icon
-                        include ../public/images/svg_pug/language_icon.pug
-                      div
-                        include ../public/images/svg_pug/show_language_list.pug
-            div
-              div.header_user
-                button.header_user_btn#header_user_btn(type="button" aria-expanded="false")
-                  div(aria-label="메인 탐색 메뉴")
-                    include ../public/images/svg_pug/profile_menu.pug
-                  div.header_user_icon
-                    include ../public/images/svg_pug/profile_default.pug
-                div.profile_menu_container#profile_menu_container
-                  div.profile_menu#profile_menu
-                    ul
-                      li#login 로그인
-                      li#signUp 회원가입
-                      .li_line
-                      li 숙소 호스트 되기
-                      li 체험 호스팅 하기
-                      li 도움말
     section#login_modal(style="display: none")
       div.modal_overlay#modal_overlay
       div.modal_container#modal_container
@@ -129,18 +82,3 @@ html
                     div(style="margin-bottom: 16px;")
                       button.main_login_btn(type="submit" aria-busy="false")
                         span.main_login_btn_text 로그인
-              div(style="margin-top: 16px; margin-bottom: 16px;")
-                div.line
-              div
-                span.light_text 에어비앤비 계정이 없으세요?
-                #sign_up_btn
-                  button.text_btn(type="button" aria-busy="false") 회원 가입
-    include ./components/modal_login.pug
-
-
-    div.tmp
-      button(onclick="location.href='/login'")= button
-      button(onclick="location.href='/become_a_host'") 숙소 등록
-      if !isLogin
-        button(onclick="location.href='/signUp'") 회원가입
-        h1= user

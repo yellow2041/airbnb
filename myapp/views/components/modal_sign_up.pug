@@ -1,0 +1,16 @@
+section#login_modal(style="display: none")
+  div.modal_overlay#modal_overlay
+  div.modal_container#modal_container
+    div.modal#modal(role="dialog" aria-label="회원 가입" style="position: relative;")
+      div.close_modal#close_modal
+        button.close_modal_btn(aria-label="닫기" type="button")
+          span.close_modal_icon
+            include ../public/images/svg_pug/close_modal.pug
+      header.modal_header
+        div.modal_div1
+        div.modal_div2
+          h1.modal_title(tabindex="-1")
+            div.modal_title_text 회원 가입
+      div.modal_contents
+        section
+              

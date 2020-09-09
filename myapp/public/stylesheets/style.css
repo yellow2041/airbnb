@@ -49,10 +49,18 @@ h1 {
 }
 ul {
   list-style-type: none;
-  line-height: 2.3em;
+  line-height: 3em;
+  padding-left:40px;
+  padding-inline-start: 0px;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+li {
+  padding-left: 40px;
 }
 li:hover {
   cursor: pointer;
+  background-color: #ecf0f1;
 }
 label {
   cursor: default;
@@ -76,6 +84,9 @@ input {
   border-style: inset;
   border-color: -internal-light-dark(rgb(118,118,118),rgb(195,195,195));
   border-image: initial;
+}
+input:focus, button:focus, h1:focus {
+  outline: none;
 }
 
 .fixed_box {
@@ -109,7 +120,7 @@ input {
   background: rgb(255,255,255);
   transition: box-shadow 0.3s cubic-bezier(0.35, 0, 0.65, 1) 0s;
 }
-.header1 {
+.header_logo {
   padding-left: 40px;
   padding-right: 40px;
   align-items: center;
@@ -121,10 +132,7 @@ input {
   z-index: 1;
   margin: 0px auto;
 }
-.header2 {
-  box-sizing: border-box;
-}
-.header3 {
+.header_logo_link {
   align-items: center;
   display: inline-flex;
   height: 80px;
@@ -133,7 +141,7 @@ input {
   z-index: 1;
   outline: none;
 }
-.header4 {
+.header_menu {
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -141,7 +149,7 @@ input {
   height: 42px;
   box-sizing: border-box;
 }
-.header5 {
+.header_menu_right {
   display: flex;
   margin-right: 8px;
   box-sizing: border-box;
@@ -171,6 +179,10 @@ input {
   color: #222222;
   box-sizing: border-box;
 }
+.become_a_host:hover {
+  background-color: #dddddd4a;
+  border-radius: 21px;
+}
 .become_a_host_text {
   align-items: center;
   display: flex;
@@ -183,7 +195,7 @@ input {
   position: absolute;
   top: 200px;
 }
-.header6 {
+.header_language {
   position: relative;
   display: flex;
   box-sizing: border-box;
@@ -211,15 +223,7 @@ input {
   color: #222222;
   box-sizing: border-box;
 }
-.header7 {
-  align-items:center;
-  display: flex;
-  height: 100%;
-  position: relative;
-  z-index: 1;
-  box-sizing: border-box;
-}
-.header8 {
+.header_language_btn {
   align-items:center;
   display: flex;
   height: 18px;
@@ -227,7 +231,7 @@ input {
   z-index: 1;
   box-sizing: border-box;
 }
-.header9 {
+.header_language_btn_icon {
   margin-right: 6px;
   box-sizing: border-box;
 }
@@ -245,10 +249,6 @@ input {
   color: #222222;
   cursor: pointer;
   display: inline-flex;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
   margin: 0px;
   outline: none;
   overflow: visible;
@@ -621,6 +621,26 @@ input {
   display: block;
   width: 100%;
 }
+.input_box_clicked {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: normal;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  text-transform: undefined;
+  color: #484848;
+  padding-top: var(--font-form-element-padding-top, undefined);
+  padding-bottom: var(--font-form-element-padding-bottom, undefined);
+  border-width: 1px;
+  border-color: #008489;
+  border-radius: 4px;
+  border-style: solid;
+  background-color: #ffffff;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+}
 .input_icon_space {
   float: right;
 }
@@ -659,8 +679,115 @@ input {
   width: 100%;
   margin: 0px;
 }
-
-
+.show_password {
+  display: table;
+  width: 100%;
+  border-spacing: 0px;
+}
+.show_password_space {
+  display: table-cell;
+  width: 100%;
+  vertical-align: middle;
+}
+.show_password_btn_div{
+  display: table-cell;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.text_btn {
+  color: #008489;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background: transparent;
+  border: 0px;
+  cursor: pointer;
+  margin: 0px;
+  padding: 0px;
+  user-select: auto;
+  text-align: left;
+}
+.text_btn:hover {
+  text-decoration: underline;
+}
+.login_alternative {
+  margin: 0px;
+  display: flex;
+  overflow-wrap: break-word;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3em;
+  color: rgb(72,72,72);
+}
+.dot {
+  margin-left: 8px;
+  margin-right: 8px;
+  display: inline-block;
+}
+.dot_inner {
+  margin: 0px;
+  overflow-wrap: break-word;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.375;
+  color: rgb(72,72,72);
+}
+.main_login_btn {
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: normal;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 880;
+  border-width: 2px;
+  padding-left: 22px;
+  padding-right: 22px;
+  background: #FF5A5F;
+  border-color: transparent;
+  border-color: transparent;
+  color: #ffffff;
+  display: inline-block;
+  margin: 0px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+  width: 100%;
+  border-style: solid;
+  min-width: 70px;
+}
+.main_login_btn_text {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: normal;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  color: inherit;
+}
+.li_line {
+  border-bottom: 1px solid #bdc3c7;
+  margin-top:5px;
+}
+.line {
+  border-bottom-width: 1px;
+  border-bottom-color: #EBEBEB;
+  border-bottom: 1px solid rgb(235,235,235);
+}
+.light_text {
+  margin: 0px;
+  overflow-wrap: break-word;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.375em;
+  color: rgb(72,72,72);
+}
 
 #body_div {
   position: fixed;
@@ -668,4 +795,10 @@ input {
   left: 0;
   right: 0;
   bottom: 0;
+}
+#sign_up_btn {
+  margin-left: 8px;
+  margin-right: 8px;
+  display: inline-block;
+  font-weight: bold;
 }
