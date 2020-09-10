@@ -7,7 +7,7 @@ var Datastore = require('nedb');
 
 var indexRouter = require('./controller/routes/index');
 var usersRouter = require('./controller/routes/users');
-var signUpRouter = require('./controller/routes/signUp');
+var signUpRouter = require('./controller/routes/signup');
 var loginRouter = require('./controller/routes/login');
 var become_a_hostRouter = require('./controller/routes/become_a_host');
 
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/signUp', signUpRouter);
+app.use('/signup', signUpRouter);
 app.use('/login', loginRouter);
 app.use('/become_a_host', become_a_hostRouter);
 

@@ -1,0 +1,32 @@
+.search_div(data-nosnippet="true")
+    form(method="get" role="search")
+        fieldset.search_field
+            div(role="tablist" aria-label="무엇을 찾고 계신가요?")
+                label.search_field_label#stays(for="search-block-tab-true-STAYS")
+                    input.search_field_select#stays_input(type="radio" role="tab" aria-selected="true")
+                    span.search_field_text#stays_text(data-text="true") 숙소
+                label.search_field_label#experience(for="search-block-tab-true-EXPERIENCES")
+                    input.search_field_select_not#experience_input(type="radio" role="tab" aria-selected="false")
+                    span.search_field_text#experience_text(data-text="true") 체험
+                a.search_link(href="/") 온라인 체험
+        div#search_main_div
+            div#search_contents
+                #search_location
+                    .search_input
+                        .search_input_title 위치
+                        input.search_input_input(aria-autocomplete="list" aria-expanded="false" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="어디로 여행가세요?")
+                .search_line
+                #checkin_checkout
+                    .search_input_check
+                        .search_input_title 체크인
+                        input.search_input_input(type="date")
+                    .search_line
+                    .search_input_check
+                        .search_input_title 체크아웃
+                        input.search_input_input(type="date")
+                .search_line
+                div.search_input(style="padding: 16px 24px;")
+                    .search_input_title 인원
+                    input.search_input_input(type="number" aria-autocomplete="list" aria-expanded="false" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="게스트 추가")
+            div#search_btn_div
+                button#search_btn_btn(type="submit")

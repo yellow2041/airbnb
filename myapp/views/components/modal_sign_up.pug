@@ -1,16 +1,124 @@
-section#login_modal(style="display: none")
-  div.modal_overlay#modal_overlay
-  div.modal_container#modal_container
-    div.modal#modal(role="dialog" aria-label="회원 가입" style="position: relative;")
-      div.close_modal#close_modal
-        button.close_modal_btn(aria-label="닫기" type="button")
-          span.close_modal_icon
-            include ../public/images/svg_pug/close_modal.pug
-      header.modal_header
-        div.modal_div1
-        div.modal_div2
-          h1.modal_title(tabindex="-1")
-            div.modal_title_text 회원 가입
-      div.modal_contents
-        section
-              
+section#signup_modal(style="display: none")
+    div.modal_overlay#modal_overlay
+    div.modal_container#modal_container
+        div.modal#modal(role="dialog" aria-label="회원 가입" style="position: relative;")
+            div.close_modal#close_modal_signup
+                button.close_modal_btn(aria-label="닫기" type="button")
+                    span.close_modal_icon
+                        include ../../public/images/svg_pug/close_modal.pug
+            header.modal_header
+                div.modal_div1
+                div.modal_div2
+                    h1.modal_title(tabindex="-1")
+                        div.modal_title_text 회원 가입
+            div.modal_contents(tabindex="0")
+                section
+                    form(action="/signup" method="post")
+                        div(style="margin-bottom: 16px;")
+                            div.login_input
+                                label.input_label(for="email-signup-email") 이메일 주소
+                                div
+                                    div.input_box
+                                        div.input_icon_space
+                                            div.input_icon1
+                                                div.input_icon2
+                                                    div.input_icon_image
+                                                        include ../../public/images/svg_pug/login_email.pug
+                                        div.input_box_real
+                                            input.login_input_form#signup_input_form_email(name="email" placeholder="이메일 주소" type="email" value)
+                        div(style="margin-bottom: 16px;")
+                            div.login_input
+                                label.input_label(for="email-signup-user[first_name]") 이름(예: 길동)
+                                div
+                                    div.input_box
+                                        div.input_icon_space
+                                            div.input_icon1
+                                                div.input_icon2
+                                                    div.input_icon_image
+                                                        include ../../public/images/svg_pug/input_user_icon.pug
+                                        div.input_box_real
+                                            input.login_input_form#signup_input_form_first_name(name="first_name" placeholder="이름(예: 길동)" type="text" value)
+                        div(style="margin-bottom: 16px;")
+                            div.login_input
+                                label.input_label(for="email-signup-user[last_name]") 성(예: 홍)
+                                div
+                                    div.input_box
+                                        div.input_icon_space
+                                            div.input_icon1
+                                                div.input_icon2
+                                                    div.input_icon_image
+                                                        include ../../public/images/svg_pug/input_user_icon.pug
+                                        div.input_box_real
+                                            input.login_input_form#signup_input_form_last_name(name="last_name" autocomplete="성(예: 홍)" placeholder="이메일 주소" type="text" value)
+                        div
+                            div(style="margin-bottom: 16px;")
+                            div.login_input
+                                label.input_label(for="email-signup-password") 비밀번호
+                                div
+                                    div.input_box
+                                        div.input_icon_space
+                                            div.input_icon1
+                                                div.input_icon2
+                                                    div.input_icon_image
+                                                        button.password_show_btn(type="button" tabindex="-1")
+                                                            include ../../public/images/svg_pug/password_hiding.pug
+                                        div.input_box_real
+                                            input.login_input_form#sign_input_form_password(name="password" autocomplete="off" placeholder="비밀번호 설정하기" type="password" autocapitalize="none" autocorrect="off" spellcheck="false" value)
+                            div(style="margin-bottom: 16px;")
+                                div
+                                    div(style="margin-bottom: 0px")
+                                        div.bold_text 생일
+                                    div.modal_explain_text
+                                        div.light_text 만 18세 이상의 성인만 회원으로 가입할 수 있습니다. 생일은 다른 에어비앤비 이용자에게 공개되지 않습니다.
+                                    div(role="group" aria-label="생일 설정하기")
+                                        div#signup_birth
+                                            div#signup_birth_month 
+                                                label.signup_label(for="email-signupuser[birthday_month]") 월
+                                                div.input_box
+                                                    select.select_box(name="birthday_month")
+                                                        option(disabled value) 월
+                                                        -for (let i=1;i<=12; i++)
+                                                            option(value=i) #{i}월
+                                                    span.select_box_span
+                                                        include ../../public/images/svg_pug/selectbox_btn
+                                            div#signup_birth_day
+                                                label.signup_label(for="email-signupuser[birthday_day]") 일
+                                                div.input_box
+                                                    select.select_box(name="birthday_day")
+                                                        option(disabled value) 일
+                                                        -for (let i=1;i<=31; i++)
+                                                            option(value=i) #{i}
+                                                    span.select_box_span
+                                                        include ../../public/images/svg_pug/selectbox_btn
+                                            div#signup_birth_year
+                                                label.signup_label(for="email-signupuser[birthday_year]") 년
+                                                div.input_box
+                                                    select.select_box(name="birthday_year")
+                                                        option(disabled value) 년
+                                                        -for (let i=2020;i>=1900; i--)
+                                                            option(value=i) #{i}
+                                                    span.select_box_span
+                                                        include ../../public/images/svg_pug/selectbox_btn
+                            div(style="margin-bottom: 16px;")
+                                div.modal_explain_text
+                                    div.light_text 에어비앤비의 회원 전용 할인, 추천 여행 정보, 프로모션 및 정책 변경사항을 이메일로 보내드립니다. 계정 관리의 환경설정 또는 프로모션 알림에서 언제든지 메시지 수신을 거부할 수 있습니다.
+                                div(style="margin-top: 4px; margin-bottom: 20px;")
+                                    div
+                                        input(type="hidden" name="user_profile_info[receive_promotional_email]" value="0")
+                                        label.checkbox_label(for="user_profile_info[receive_promotional_email]")
+                                            div.checkbox_box#signup_checkbox_box
+                                                span.checkbox_box_span
+                                                    input.checkbox_input(aria-invalid="false" type="checkbox" value="1")
+                                                    span.checkbox_fake_area#signup_checkbox_fake_area(data-fake-checkbox="true" data-style-select="false" data-style-default="true")
+                                            div.checkbox_text_div
+                                                span.checkbox_text_span
+                                                    div.light_text 에어비앤비에서 보내는 마케팅 메시지를 받고 싶지 않습니다.
+                                div(style="margin-bottom: 16px;")
+                                    button.main_login_btn(type="submit" aria-busy="false")
+                                        span.main_login_btn_text 가입하기
+                        div(style="margin-top: 16px; margin-bottom: 16px;")
+                            div.line
+                        div
+                            span.light_text 이미 에어비엔비 계정이 있나요?
+                                #sign_up_btn
+                                    button.text_btn#sign_up_btn(type="button" aria-busy="false") 로그인

@@ -7,7 +7,6 @@ body {
   margin: 0;
   word-break: keep-all;
 }
-
 a {
   color: #00B7FF;
 }
@@ -87,6 +86,32 @@ input {
 }
 input:focus, button:focus, h1:focus {
   outline: none;
+}
+select {
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  align-items: center;
+  white-space: pre;
+  cursor: default;
+  font: 400 13px Arial;
+  appearance: none;
+}
+select:not(:-internal-list-box) {
+  overflow: visible
+}
+option {
+  font-weight: normal;
+  display: block;
+  white-space: pre;
+  min-height: 1.2em;
+  padding: 0px 2px 1px;
+}
+option:disabled {
+  color: rgb(170,170,170);
 }
 
 .fixed_box {
@@ -339,6 +364,7 @@ input:focus, button:focus, h1:focus {
   box-sizing: border-box;
 }
 .modal_container {
+  height: 720px;
   padding: 40px;
   align-items: center;
   z-index: 2000;
@@ -511,7 +537,7 @@ input:focus, button:focus, h1:focus {
   margin-top: 7px;
   padding: 5px;
   align-items: center;
-  z-index: 2000;
+  z-index: 0;
   position: relative;
   display: flex;
   visibility: hidden;
@@ -606,10 +632,7 @@ input:focus, button:focus, h1:focus {
   line-height: 24px;
   letter-spacing: normal;
   font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
-  text-transform: undefined;
   color: #484848;
-  padding-top: var(--font-form-element-padding-top, undefined);
-  padding-bottom: var(--font-form-element-padding-bottom, undefined);
   border-width: 1px;
   border-color: #EBEBEB;
   border-radius: 4px;
@@ -620,6 +643,7 @@ input:focus, button:focus, h1:focus {
   z-index: 0;
   display: block;
   width: 100%;
+  overflow: hidden;
 }
 .input_box_clicked {
   font-size: 16px;
@@ -773,6 +797,7 @@ input:focus, button:focus, h1:focus {
 .li_line {
   border-bottom: 1px solid #bdc3c7;
   margin-top:5px;
+  margin-bottom: 5px;
 }
 .line {
   border-bottom-width: 1px;
@@ -788,6 +813,140 @@ input:focus, button:focus, h1:focus {
   line-height: 1.375em;
   color: rgb(72,72,72);
 }
+.password_show_btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.bold_text {
+  margin: 0px;
+  overflow-wrap: break-word;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.375em;
+  color: rgb(72,72,72);
+}
+.modal_explain_text {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.light_text {
+  margin: 0px;
+  overflow-wrap: break-word;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28em;
+  color: rgb(72,72,72);
+}
+.signup_label {
+  border: 0px;
+  clip: react(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0px;
+  position: absolute;
+  white-space: nowrap;
+  width: 10px;
+}
+.select_box {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: normal;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  color: #484848;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  font-weight: normal;
+  background-color: transparent;
+  padding-left: 11px;
+  padding-right: 40px;
+  border: none;
+  border-radius: 0px;
+  margin: 0px;
+  text-indent: 0px;
+  height: unset;
+  display: block;
+  width: 100%;
+}
+.select_box_span {
+  top: 16px;
+  right: 16px;
+  position: absolute;
+  line-height: 0;
+  pointer-events: none;
+}
+.checkbox_label{
+  background: transparent;
+  border: 0px;
+  cursor: pointer;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-spacing: 0px;
+}
+.checkbox_box {
+  display: table-cell;
+  vertical-align: top;
+  position: relative;
+  top: 2px;
+}
+.checkbox_text_div {
+  display: table-cell;
+  width: 100%;
+  vertical-align: top;
+  border-spacing: 0px;
+  cursor: pointer;
+  padding-left: 8px;
+}
+.checkbox_text_span {
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: normal;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  color: rgb(72,72,72);
+  display: inline-block;
+  vertical-align: top;
+}
+.checkbox_box_span {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0px;
+}
+.checkbox_input {
+  position: absolute;
+  width: 0px;
+  opacity: 0;
+}
+.checkbox_fake_area {
+  background: #ffffff;
+  border-width: 1px;
+  border-color: #b0b0b0;
+  border-radius: 2px;
+  height: 18px;
+  width: 18px;
+  border-style: solid;
+  display: inline-block;
+  text-align: center;
+  overflow: hidden;
+}
+.checkbox_fake_area_clicked {
+  background: rgb(0,132,137);
+  color:#ffffff;
+  border-width: 1px;
+  border-color: rgb(0,132,137);
+  border-radius: 2px;
+  height: 18px;
+  width: 18px;
+  border-style: solid;
+  display: inline-block;
+  text-align: center;
+  overflow: hidden;
+}
 
 #body_div {
   position: fixed;
@@ -801,4 +960,32 @@ input:focus, button:focus, h1:focus {
   margin-right: 8px;
   display: inline-block;
   font-weight: bold;
+}
+#signup_birth {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+#signup_birth_month {
+  width: 37%;
+  float: left;
+  padding-left: 8px;
+  padding-right: 8px;
+  min-height: 1px;
+  position: relative;
+}
+#signup_birth_day {
+  width: 22%;
+  float: left;
+  padding-left: 8px;
+  padding-right: 8px;
+  min-height: 1px;
+  position: relative;
+}
+#signup_birth_year {
+  width: 31%;
+  float: left;
+  padding-left: 8px;
+  padding-right: 8px;
+  min-height: 1px;
+  position: relative;
 }
