@@ -7,7 +7,7 @@ var Datastore = require('nedb');
 
 var indexRouter = require('./controller/routes/index');
 var usersRouter = require('./controller/routes/users');
-var signUpRouter = require('./controller/routes/signup');
+var signUpRouter = require('./controller/routes/signUp');
 var loginRouter = require('./controller/routes/login');
 var become_a_hostRouter = require('./controller/routes/become_a_host');
 

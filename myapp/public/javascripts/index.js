@@ -20,6 +20,7 @@ function main_page() {
             profile_menu_container.style.visibility = 'visible';
             header_user_btn.className = "header_user_btn_click";
         }
+        console.log(event.target);
     });
 
     login.addEventListener('click', (event) => {

@@ -30,3 +30,6 @@
                     input.search_input_input(type="number" aria-autocomplete="list" aria-expanded="false" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="게스트 추가")
             div#search_btn_div
                 button#search_btn_btn(type="submit")
+                    span#search_btn_shape(style="background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%); --mouse-x:26.7; --mouse-y:48.75;")
+                    span#search_btn_icon
+                        include ../../public/images/svg_pug/search_icon.pug

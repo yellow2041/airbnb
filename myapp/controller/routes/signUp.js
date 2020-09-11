@@ -24,7 +24,7 @@ router.post('/', async(req, res, next)=>{
     req.app.locals.db.loadDatabase();
     await req.app.locals.db.find({ email: userData.email },function(err,docs){
         if(docs.length!==0){
-            res.render('alert',{message:'\'이미 존재하는 계정입니다.\'',redirect:'\'/signUp\''});
+            res.render('alert',{message:'\'이미 존재하는 계정입니다!git \'',redirect:'\'/signUp\''});
         }
         else{
             req.app.locals.db.insert(userData,function(err, newDoc){
